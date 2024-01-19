@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'ARMPipeline-conn'
+    subscriptionId: 'cd0aa898-23fb-4255-9c69-b6448119df49'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'ARMPipeline-rg'
+    location: 'West Europe'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/TIDISOFT/tdstf---Azure-IAC/main/webApps/azuredeploy.json?token=GHSAT0AAAAAACMXP2CRXWA2HXKA3EU2234CZNK3RPA'
+    overrideParameters: '-projectName [EnterAProjectName]'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate'
