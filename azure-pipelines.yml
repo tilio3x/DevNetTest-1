@@ -10,7 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -21,6 +20,5 @@ steps:
     location: 'West Europe'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/TIDISOFT/tdstf---Azure-IAC/main/webApps/azuredeploy.json?token=GHSAT0AAAAAACMXP2CRXWA2HXKA3EU2234CZNK3RPA'
-    overrideParameters: '-projectName [EnterAProjectName]'
+    csmParametersFileLink: 'https://raw.githubusercontent.com/TIDISOFT/tdstf---Azure-IAC/main/webApps/linkedStorageAccount.json?token=GHSAT0AAAAAACMXP2CRNO2IWIZSZ2UHG4LCZNLT5CA'
     deploymentMode: 'Incremental'
-    deploymentName: 'DeployPipelineTemplate'
